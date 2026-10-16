@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FakeTwitter | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- Left Navigation Sidebar -->
+        <aside class="left-sidebar">
+            <div class="logo">𝕏</div>
+
+            <nav class="navigation" aria-label="Main navigation">
+                <a href="#home" class="nav-link active">⌂ Home</a>
+                <a href="#explore" class="nav-link">⌕ Explore</a>
+                <a href="#notifications" class="nav-link">♧ Notifications</a>
+                <a href="#messages" class="nav-link">✉ Messages</a>
+                <a href="#bookmarks" class="nav-link">♧ Bookmarks</a>
+                <a href="#profile" class="nav-link">◉ Profile</a>
+            </nav>
+             <!-- My independently coded Dark/Light Mode Toggle -->
+             <!-- Dark/Light Mode Toggle Button -->
+
+             <button id="themeToggle" type="button">
+             Light Mode
+             </button>
+
+            <button class="post-button" id="sidebarPostButton" type="button">
+            Post
+        </button>
+        </aside>
+
+        <!-- Main Timeline -->
+        <main class="timeline" id="home">
+
+            <header class="timeline-header">
+                <h1>Home</h1>
+            </header>
+
+            <div class="feed-tabs">
+                <button class="feed-tab active" type="button">
+                    For you
+                </button>
+                <button class="feed-tab" type="button">
+                    Following
+                </button>
+            </div>
+
+            <!-- Tweet Composer -->
+            <section class="tweet-composer" aria-label="Create a post">
+                <div class="avatar">FK</div>
+
+                <div class="composer-content">
+                    <textarea
+                        id="tweetInput"
+                        placeholder="What is happening?!"
+                        maxlength="280"
+                        aria-label="Write your post"
+                    ></textarea>
+
+                    <div class="composer-actions">
+                        <span id="characterCount">0 / 280</span>
+                        <button id="tweetButton" type="button">
+                            Post
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Twitter Feed -->
+            <section class="feed" id="tweetFeed" aria-label="Timeline posts">
+
+                <article class="tweet" data-tweet-id="jordan-001">
+                    <div class="avatar">JD</div>
+
+                    <div class="tweet-content">
+                        <div class="tweet-author">
+                            <strong>Jordan Davis</strong>
+                            <span>@jordandavis · 2h</span>
+                        </div>
+
+                        <p>
+                            Building something new today.
+                            Every great project starts with one line of code!
+                        </p>
+
+                        <div class="tweet-actions">
+                            <button type="button">♡ Like</button>
+                            <button type="button">↩ Reply</button>
+                            <button type="button">↗ Share</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tweet" data-tweet-id="sarah-001">
+                    <div class="avatar">SM</div>
+
+                    <div class="tweet-content">
+                        <div class="tweet-author">
+                            <strong>Sarah Miller</strong>
+                            <span>@sarahmiller · 5h</span>
+                        </div>
+
+                        <p>
+                            Learning HTML, CSS and JavaScript has been
+                            an exciting journey. Keep building!
+                        </p>
+
+                        <div class="tweet-actions">
+                            <button type="button">♡ Like</button>
+                            <button type="button">↩ Reply</button>
+                            <button type="button">↗ Share</button>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+        </main>
+
+<!-- Explore Page -->
+<section id="explorePage" class="explore-page" hidden>
+
+    <header class="timeline-header">
+        <h1>Explore</h1>
+    </header>
+
+    <div class="explore-search">
+        <input
+            type="search"
+            id="exploreSearchInput"
+            placeholder="Search tweets..."
+            aria-label="Search tweets"
+        >
+    </div>
+
+    <div id="exploreResults"></div>
+
+    <p id="exploreNoResults" hidden>
+        No matching tweets found.
+    </p>
+
+</section>
+
+        <!-- Right Discovery Sidebar -->
+        <aside class="right-sidebar">
+
+            <div class="search-container">
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search"
+                    aria-label="Search posts"
+                >
+            </div>
+
+            <section class="sidebar-card">
+                <h2>What's happening</h2>
+
+                <div class="trend">
+                    <small>Technology · Trending</small>
+                    <strong>#JavaScript</strong>
+                    <small>12.5K posts</small>
+                </div>
+
+                <div class="trend">
+                    <small>Technology · Trending</small>
+                    <strong>#WebDevelopment</strong>
+                    <small>8,240 posts</small>
+                </div>
+
+                <div class="trend">
+                    <small>Education · Trending</small>
+                    <strong>#LearnToCode</strong>
+                    <small>5,100 posts</small>
+                </div>
+            </section>
+
+            <section class="sidebar-card">
+                <h2>Who to follow</h2>
+
+                <div class="follow-suggestion">
+                    <div class="avatar">AC</div>
+                    <div>
+                        <strong>Alex Carter</strong>
+                        <small>@alexcodes</small>
+                    </div>
+                    <button type="button">Follow</button>
+                </div>
+
+                <div class="follow-suggestion">
+                    <div class="avatar">TK</div>
+                    <div>
+                        <strong>Thabo Khumalo</strong>
+                        <small>@thabotech</small>
+                    </div>
+                    <button type="button">Follow</button>
+                </div>
+            </section>
+
+        </aside>
+
+    </div>
+
+    <!-- Tweet Composition Modal -->
+    <div
+        id="composeModalOverlay"
+        class="compose-modal-overlay"
+        hidden
+        aria-hidden="true"
+    >
+        <div
+            id="composeModal"
+            class="compose-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="composeModalTitle"
+        >
+            <div class="compose-modal-header">
+                <button
+                    type="button"
+                    id="composeModalClose"
+                    class="compose-modal-close"
+                    aria-label="Close compose post"
+                >
+                    ×
+                </button>
+                <h2 id="composeModalTitle">Compose post</h2>
+            </div>
+
+            <div class="compose-modal-body">
+                <div class="avatar">FK</div>
+
+                <div class="composer-content">
+                    <textarea
+                        id="modalTweetInput"
+                        placeholder="What is happening?!"
+                        maxlength="280"
+                        aria-label="Write your post"
+                        aria-describedby="modalCharacterCount"
+                    ></textarea>
+
+                    <div class="composer-actions">
+                        <span id="modalCharacterCount">0 / 280</span>
+                        <button id="modalPostButton" type="button" disabled>
+                            Post
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Mobile Compose Button -->
+<button
+    id="mobilePostButton"
+    class="mobile-post-button"
+    type="button"
+    aria-label="Compose a new post">
+    +
+</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
